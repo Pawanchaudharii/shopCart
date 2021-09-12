@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Electronic Product Detail{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    {% if messages %}
+        {%for message in messages%}
+        <center>
+        <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" style="color: red;"
+                     data-dismiss="alert">&times;</button>
+                <strong style="color: red;">Failed!</strong> <p style="color: black;">{{ message }}</p>     
+        </div>
+        </center>
+        {%endfor%}
+    {% endif %}
+    <div class="row">
+       
+        <div class="col-sm-6 text-center align-self-center">
+            <img src="{{ electronicsproduct.electronicsproduct_image.url }}" alt="" style="width:80%;height: 80%;"
+                class="img-fluid img-thumbnail" />
+        </div>
+        <div class="col-sm-5 offset-sm-1">
+            <h2>Product Title: {{electronicsproduct.electronicsproductname}}</h2>
+            <hr><br>
+
+            <h4>₹ {{electronicsproduct.price}} </h4><br>
+           
+            <form action="/e_add-to-cart/{{electronicsproduct.id}}" class="d-inline">
+               
+                Quantity <select name="qty">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select><br>
+                <input type="hidden" name="eleprod_id" value="{{electronicsproduct.id}}" id="eleprod_id">
+                <input type="hidden" name="eleprod_price" value="{{electronicsproduct.price}}" id="eleprod_price">
+                <button class="btn btn-primary shadow px-5 py-2" type="submit">Add to Cart</button>
+                <!-- <a href="#" class="btn btn-primary shadow px-5 py-2">Add to Cart</a> -->
+                <!-- <button class="btn btn-danger shadow px-5 py-2" type="submit">Buy Now</button> -->
+                <a href="/buy_now" type="submit" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
+            
+            </form>
+            
+           
+              
+               
+           
+            <p class="mt-5">
+            <h5> Product Description:</h5> 
+            <ul>
+                {% for d in data %}
+                <li>{{d}}</li>
+                {% endfor %}
+            </ul></p> <br>  
+            
+        </div>
+     
+    </div>
+
+</div>
+{% endblock main-content %}

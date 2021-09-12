@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}MakePayment{% endblock title %}
+{% block main-content %}
+<div class="container">
+    {% if messages %}
+    {%for message in messages%}
+    <center>
+        <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" style="color: red;" data-dismiss="alert">&times;</button>
+        <strong style="color: red;">Failed!</strong>
+        <p style="color: black;">{{ message }}</p>
+        </div>
+    </center>
+    {%endfor%}
+    {% endif %}
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <center>
+                <div class="pt-4">
+                    <img class="mr-2" width="45px"
+                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                        alt="Visa">
+                    <img class="mr-2" width="45px"
+                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                        alt="American Express">
+                    <img class="mr-2" width="45px"
+                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                        alt="Mastercard">
+                    <img class="mr-2" width="45px"
+                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+                        alt="PayPal acceptance mark">
+                </div>
+            </center>
+
+            <form action="" method="POST" novalidate class="shadow p-5">
+                {%csrf_token%}
+                </center>
+                <div class="mb-3">
+                    <label for="card_no" class="form-label">Enter Card No.</label>
+                    <input type="text" name="card_no" id="card_no" class="form-control"
+                        placeholder="0000 0000 0000 0000" autofocus required>
+                </div>
+                <div class="mb-3">
+                    <label for="cvv" class="form-label">Enter CVV No</label>
+                    <input type="password" name="cvv" id="cvv" class="form-control" placeholder="000" required>
+                </div>
+                <div class="mb-3">
+                    <label for="expiry" class="form-label">Enter Expiry</label>
+                    <input type="text" name="expiry" id="expiry" class="form-control" placeholder="MM/YYYY" required>
+                </div>
+                <center>
+                    <div class="form-group">
+                        <input type="submit" value="Pay  ₹{{request.session.tot}}" class="button btn-warning">
+                    </div>
+                </center>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

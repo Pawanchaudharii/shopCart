@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Reasult{% endblock title %}
+{% block main-content %}
+
+<div class="m-3">
+    <div class="container my-5">
+    
+    <h2>Search Results:</h2>  
+    {% if messages %}
+        {%for message in messages%}
+        
+        <div >        
+            <p style="color: black;">{{ message }}</p>     
+        </div>
+        
+        {%endfor%}
+    {% endif %}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    {% for ep in electronicsproducts %}
+                    <div class="col-sm-4 text-center mb-2"><a href="#" class="btn"></a>
+                        <div class="item"><img src="{{ ep.electronicsproduct_image.url }}" alt="" height="200" class="">
+                            <div class="fw-bold">{{ep.electronicsproductname}}</div>
+                            <div class="fw-bold">₹. {{ep.price}}</div>
+                            <h6><a href="/ShoweleproDetails/{{ep.id}}">Show Details</a></h6>
+                            <hr>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    {% for fp in fashionproducts %}
+                    <div class="col-sm-4 text-center mb-4"><a href="#" class="btn"></a>
+                        <div class="item"><img src="{{fp.fashionproduct_image.url}}" alt="" height="300" class="">
+                            <div class="fw-bold">{{fp.fashionproductname}}</div>
+                            <div class="fw-bold">₹. {{fp.price}}</div>
+                            <h6><a href="/ShowfashionproDetails/{{fp.id}}">Show Details</a></h6>
+                            <hr>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

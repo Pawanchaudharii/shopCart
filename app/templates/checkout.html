@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CheckOut{% endblock title %}
+{% block main-content %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-sm-6">
+      <h4>Order Summary</h4>
+      <hr>
+      {% for item in cart_items %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>Product: {{item.eleproduct.electronicsproductname}}</h5>
+          <p>Quantity: {{item.qty}}</p>
+          <p class="fw-bold">Price: ₹ {% widthratio item.eleproduct.price 1 item.qty %}</p>
+        </div>
+      </div>
+      {% endfor %}
+      {% for item1 in cart1_items %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <h5>Product: {{item1.fashionproduct.fashionproductname}}</h5>
+          <p>Quantity: {{item1.qty}}</p>
+          <p class="fw-bold">Price: ₹ {% widthratio item1.fashionproduct.price 1 item1.qty %}</p>
+        </div>
+      </div>
+      {% endfor %}
+      
+      <small>Term and Condition: </small>
+    </div>
+    <div class="col-sm-4  offset-sm-1">
+      <h4>Address </h4>
+      <hr>
+      <form action="/makepayment">
+        <li class="d-grid"><a href="/profile" class="btn btn-primary">Change Address</a></li>
+        {% for data in add %}
+      
+        <div class="card">
+          <div class="card-body">
+            <h3>Address </h3>
+            <p>Name:{{data.name}}</p>
+            <p>Address 1: {{data.address}}</p>
+            <p>Address 2: {{data.address2}}</p>
+            <p>City: {{data.city}}</p>
+            <p>State: {{data.state}}</p>
+            <p>Zip: {{data.zip}}</p><br>
+          </div>
+        </div>
+        <div class="card mb-2">
+          <div class="card-body">
+            <h3>Total Amount: ₹ {{request.session.tot}}</h3>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="text-end">
+          <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

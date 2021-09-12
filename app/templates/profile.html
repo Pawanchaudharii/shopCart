@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+  {% if messages %}
+  {%for message in messages%}
+  <center>
+    <div class="alert alert-success alert-dismissible">
+      <button type="button" class="close" style="color: red;" data-dismiss="alert">&times;</button>
+      <strong style="color: red;">Failed!</strong>
+      <p style="color: black;">{{ message }}</p>
+    </div>
+  </center>
+  {%endfor%}
+  {% endif %}
+  <div class="row">
+    <h3>Welcome Pawan</h3>
+    <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+        <li class="d-grid"><a href="/profile" class="btn btn-primary">Address</a></li>
+        <li class="d-grid"><a href="/show_address" class="btn btn-success">Show Address</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+      <form action="/address" method="POST">
+        {% csrf_token %}
+        <div class="col-12">
+          <label for="inputName" class="form-label">Name</label>
+          <input type="text" class="form-control" name="inputName" id="inputName" required>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="1234 Main St"
+            required>
+        </div>
+        <div class="col-12">
+          <label for="inputAddress2" class="form-label">Address 2</label>
+          <input type="text" class="form-control" name="inputAddress2" id="inputAddress2"
+            placeholder="Apartment, studio, or floor" required>
+        </div>
+        <div class="col-12">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" class="form-control" name="inputCity" id="inputCity" required>
+        </div>
+        <div class="col-12">
+          <label for="inputState" class="form-label">State</label>
+          <input type="text" class="form-control" name="inputState" id="inputState" required>
+        </div>
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" class="form-control" name="inputZip" id="inputZip" required>
+        </div>
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

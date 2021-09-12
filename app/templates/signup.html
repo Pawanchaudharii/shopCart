@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}SignUp{% endblock title %}
+
+{% block main-content %}
+<script type="text/javascript">
+    function checkPassword() {
+        var pwd = document.getElementById("pwd").value;
+        var pwd1 = document.getElementById("pwd1").value
+        if (pwd != pwd1) {
+            alert("Password mismatch");
+            return;
+        }
+        else {
+            myform.submit();
+        }
+    }
+</script>
+
+<div class="container">
+    {% if messages %}
+        {%for message in messages%}
+        <center>
+        <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" style="color: red;"
+                     data-dismiss="alert">&times;</button>
+                <strong style="color: red;">Failed!</strong> <p style="color: black;">{{ message }}</p>     
+        </div>
+        </center>
+        {%endfor%}
+    {% endif %}
+    <div class="row my-3">
+        <div class="col-sm-6 offset-sm-3">
+            <h3>SignUp</h3>
+            <hr>
+
+            <form action="" method="post" novalidate class="shadow p-5" name="myform">
+                {%csrf_token%}
+                <div class="mb-3">
+                    <label for="uname" class="form-label">Username</label>
+                    <input type="text" name="uname" id="uname" class="form-control" autofocus required>
+                </div>
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">Password</label>
+                    <input type="password" name="pwd" class="form-control" id="pwd" minlength="8" number>
+                </div>
+                <div class="mb-3">
+                    <label for="pwd1" class="form-label">Confirm Password</label>
+                    <input type="password" name="pwd1" class="form-control" id="pwd1" minlength="8"
+                        onblur="checkPassword();" required>
+                </div>
+                <center>
+                    <div class="form-group">
+                        <input type="button" value="Sign Up" class="button btn-danger">
+                    </div>
+                </center>
+
+                <br>
+                <div class="text-center text-primary fw-bold"><small>Existing User ? <a href="/login"
+                            class="text-danger">Login Now</a> </small></div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

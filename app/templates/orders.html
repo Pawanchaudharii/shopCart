@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Orders{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+  <div class="row">
+    <h3>Welcome Pawan</h3>
+    <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+        <li class="d-grid"><a href="/orders" class="btn btn-primary">Orders</a></li>
+      </ul>
+    </div>
+    <div class="col-sm-9 offset-sm-1">
+      <div class="row">
+        <div class="col-sm-6">
+
+
+
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Order no.</th>
+                <th>Order Date</th>
+                <th>Amount</th>
+                <th>Products</th>
+              </tr>
+            </thead>
+            {% for detail in orderdetail %}
+            <tbody>
+              <tr>
+                <td>{{detail.id}}</td>
+                <td>{{detail.order_date}}</td>
+                <td>{{detail.amount}}</td>
+                <td>{{detail.order_details}}</td>
+              </tr>
+            </tbody>
+            {% endfor %}
+          </table>
+          <a href="\orderhistory">Clear Order History</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}

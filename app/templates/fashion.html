@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}fashion{% endblock title %}
+{% block main-content %}
+
+<div class="m-3">
+    <div class="container my-5">
+        <center>
+            <h2>{{fashion_name}}</h2>
+        </center>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    {% for fp in fashionproducts %}
+                    <div class="col-sm-4 text-center mb-4"><a href="#" class="btn"></a>
+                        <div class="item"><img src="{{fp.fashionproduct_image.url}}" alt="" height="300" class="">
+                            <div class="fw-bold">{{fp.fashionproductname}}</div>
+                            <div class="fw-bold">₹. {{fp.price}}</div>
+                            <h6><a href="/ShowfashionproDetails/{{fp.id}}">Show Details</a></h6>
+                            <hr>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock main-content %}

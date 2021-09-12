@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+  
+  <div class="row">
+    <h3>Welcome {{user}}</h3>
+    <div class="col-sm-2 border-end">
+      <ul class="list-unstyled">
+        <li class="d-grid"><a href="/show_address" class="btn btn-success">Address</a></li>
+        <li class="d-grid"><a href="/profile" class="btn btn-primary">Add Address</a></li>
+      </ul>
+    </div>
+
+    <div class="col-sm-9 offset-sm-1">
+      <div class="row">
+        {% for data in add %}
+        <div class="col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <h3>Address </h3>
+              <p>Name:{{data.name}}</p>
+              <p>Address 1: {{data.address}}</p>
+              <p>Address 2: {{data.address2}}</p>
+              <p>City: {{data.city}}</p>
+              <p>State: {{data.state}}</p>
+              <p>Zip: {{data.zip}}</p><br>
+            </div>
+          </div>
+        </div>
+        <li><a href="/delete_address" class="btn btn-danger">Delete Address</a></li>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main-content %}
