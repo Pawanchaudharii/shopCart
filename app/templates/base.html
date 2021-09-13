@@ -62,7 +62,8 @@
           </li>
         </ul>
         <form action="/search" method="GET" class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query"
+            id="query">
           <button class="btn btn-warning" type="submit">S</button>
         </form>
 
@@ -82,13 +83,8 @@
                 <li><a class="dropdown-item" href="/logout">Logout</a></li>
               </ul>
             </li>
-
-            
-
-            
-
             <a href="/show_cart">
-              <img class="img-fluid" src="{% static 'app/images/banner/cart4.jpg' %}"  />
+              <img class="img-fluid" src="{% static 'app/images/banner/cart4.jpg' %}" />
               <b><span style="color: white;">Cart</span></b>
             </a>
             {%else%}
@@ -106,7 +102,7 @@
     </div>
   </nav>
   {% block banner_slider %} {% endblock banner_slider %}
-  {% block livesale %} {% endblock livesale %}
+ 
   {% block main-content %} {% endblock main-content %}
 
   <!-- Start Footer -->

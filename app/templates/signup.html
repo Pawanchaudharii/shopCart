@@ -21,15 +21,15 @@
 
 <div class="container">
     {% if messages %}
-        {%for message in messages%}
-        <center>
+    {%for message in messages%}
+    <center>
         <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" style="color: red;"
-                     data-dismiss="alert">&times;</button>
-                <strong style="color: red;">Failed!</strong> <p style="color: black;">{{ message }}</p>     
+            <button type="button" class="close" style="color: red;" data-dismiss="alert">&times;</button>
+            <strong style="color: red;">Failed!</strong>
+            <p style="color: black;">{{ message }}</p>
         </div>
-        </center>
-        {%endfor%}
+    </center>
+    {%endfor%}
     {% endif %}
     <div class="row my-3">
         <div class="col-sm-6 offset-sm-3">

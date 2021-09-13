@@ -4,6 +4,7 @@ urlpatterns = [
     path('', views.home),
     path('showelectronics/<eid>', views.showelectronics),
     path('showfashion/<fid>', views.showfashion),
+    path('search/', views.search),
     path('ShoweleproDetails/<epid>', views.ShoweleproDetails),
     path('ShowfashionproDetails/<fpid>', views.ShowfashionproDetails),
     path('signup/', views.signup),
@@ -12,8 +13,6 @@ urlpatterns = [
     path('f_add-to-cart/<fpid>', views.f_add_to_cart),
     path('show_cart/', views.show_cart),
     path('update_remove', views.update_remove),
-    path('buy_now/', views.buy_now),
-    # path('checkout1', views.chevckout1),
     path('checkout/', views.checkout),
     path('profile/', views.profile, name='profile'),
     path('address', views.address, name='address'),
@@ -25,5 +24,4 @@ urlpatterns = [
     path('orderhistory/', views.orderhistory),
     path('changepassword/', views.change_password),
     path('logout/', views.logout ),
-    path('search/', views.search),
 ]

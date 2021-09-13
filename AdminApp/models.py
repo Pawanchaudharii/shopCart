@@ -46,8 +46,3 @@ class FashionProduct(models.Model):
 
     def __str__(self):
         return self.fashionproductname
-
-# Username (leave blank to use 'pavan-pc'): shopCart
-# Email address: shopCart@gmail.com
-# Password: pawan
-# Password (again): pawan123

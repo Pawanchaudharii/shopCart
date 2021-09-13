@@ -6,13 +6,13 @@
     <div class="row">
         {% if messages %}
         {%for message in messages%}
-            <center>
+        <center>
             <div class="alert alert-success alert-dismissible">
-                    <button type="button" class="close" style="color: red;"
-                        data-dismiss="alert">&times;</button>
-                    <strong style="color: red;">Failed!</strong> <p style="color: black;">{{ message }}</p>     
+                <button type="button" class="close" style="color: red;" data-dismiss="alert">&times;</button>
+                <strong style="color: red;">Failed!</strong>
+                <p style="color: black;">{{ message }}</p>
             </div>
-            </center>
+        </center>
         {%endfor%}
         {% endif %}
         <div class="col-sm-6 text-center align-self-center">
@@ -34,19 +34,16 @@
                 </select><br>
                 <input type="hidden" name="fashionprod_id" value="{{fashionproduct.id}}" id="fashionprod_id">
                 <button class="btn btn-primary shadow px-5 py-2" type="submit">Add to Cart</button>
-                <!-- <a href="#" class="btn btn-primary shadow px-5 py-2">Add to Cart</a> -->
             </form>
-            <button class="btn btn-danger shadow px-5 py-2" type="submit">Buy Now</button>
-            <!-- <a href="#" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a> -->
             <p class="mt-5">
-            <h5> Product Description:</h5> 
+            <h5> Product Description:</h5>
             <ul>
                 {% for d in data1 %}
                 <li>{{d}}</li>
                 {% endfor %}
-            </ul></p> <br>
+            </ul>
+            </p> <br>
         </div>
     </div>
-
 </div>
 {% endblock main-content %}

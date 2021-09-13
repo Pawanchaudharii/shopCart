@@ -5,8 +5,6 @@ from django.db.models.fields import FloatField
 from django.db.models.deletion import CASCADE
 from AdminApp.models import ElectronicsProduct, FashionProduct
 
-
-
 # Create your models here.
 class UserInfo(models.Model):
     username = models.CharField(max_length=20,primary_key=True)
@@ -79,15 +77,3 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_details
-
-class BuyNow(models.Model):
-    user = models.ForeignKey(UserInfo, on_delete=CASCADE)
-    eleproduct = models.ForeignKey(ElectronicsProduct, on_delete=CASCADE)
-    qty = models.IntegerField()
-    price = models.FloatField(default=100)
-    
-    class Meta:
-        db_table = "BuyNow"
-
-    def __str__(self):
-        return self.user

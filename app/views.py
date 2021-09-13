@@ -1,8 +1,7 @@
 from django import http
 from django.shortcuts import render,redirect
 from AdminApp.models import Electronics, Fashion, ElectronicsProduct, FashionProduct
-from app.models import BuyNow, MyCart1, UserInfo,MyCart,Profile,Payment,Order,BuyNow
-from django.http import HttpResponse
+from app.models import MyCart1, UserInfo,MyCart,Profile,Payment,Order
 from datetime import datetime
 from django.contrib import messages
 
@@ -85,7 +84,6 @@ def signup(request):
             u1.save()
             return redirect(login)
         else:
-            # return HttpResponse("User already exists...")
             messages.info(request, 'User already exists!!!')
             return redirect(signup)
 
@@ -100,7 +98,6 @@ def login(request):
     try:
         u1 = UserInfo.objects.get(username=uname, password=pwd)
     except:
-        # return HttpResponse("Invalid Credential")
         messages.info(request, 'Incorrect Usename or password!!!')
         return redirect(login)
     else:
@@ -126,7 +123,6 @@ def e_add_to_cart(request ,epid):
             cart.save()
             return redirect(show_cart)
         else:
-            # return HttpResponse("Item already in cart")
             messages.info(request, 'Item already in cart!!!')
             ele = Electronics.objects.all()
             fashion = Fashion.objects.all()
@@ -134,7 +130,6 @@ def e_add_to_cart(request ,epid):
             data = electronicsproduct.description.split("|")
             return render(request, 'eleproductdetail.html', {"ele":ele , "fashion":fashion, "electronicsproduct":electronicsproduct, "data":data})
     else:
-        # user has not logged in so ask him to login
         return redirect(login)
 
 def f_add_to_cart(request, fpid):
@@ -146,7 +141,6 @@ def f_add_to_cart(request, fpid):
         try:
             cart1 = MyCart1.objects.get(user=user, fashionproduct=fashionproduct)
         except:
-            # Add to cart
             cart1 = MyCart1()
             cart1.user = user
             cart1.fashionproduct = fashionproduct
@@ -154,7 +148,6 @@ def f_add_to_cart(request, fpid):
             cart1.save()
             return redirect(show_cart)
         else:
-            # return HttpResponse("Item already in cart")
             messages.info(request, 'Item already in cart!!!')
             ele = Electronics.objects.all()
             fashion = Fashion.objects.all()
@@ -207,33 +200,6 @@ def update_remove(request):
         item.delete()
     return redirect(show_cart)
 
-def buy_now(request):
-    if("uname" in request.session):
-        # user = UserInfo.objects.get(username = request.session["uname"])
-        # eleproduct_id = request.GET.get("eleprod_id")
-        # eleproduct = ElectronicsProduct.objects.get(id=eleproduct_id)
-        # eleproduct_price = request.GET.get("eleprod_price")
-        # price = ElectronicsProduct.objects.get(price=eleproduct_price)
-        # qty = request.GET.get("qty")
-
-        # buy = BuyNow()
-        # buy.user = user
-        # buy.eleproduct = eleproduct
-        # buy.qty = qty
-        # buy.price = price
-        # buy.save()
-        return redirect(home)
-    else:
-        return redirect(login)
-
-# def checkout1(request):
-#     ele = Electronics.objects.all()
-#     fashion = Fashion.objects.all()
-#     user = UserInfo.objects.get(username = request.session["uname"])
-#     buy = BuyNow.objects.filter(user = user)  
-#     add = Profile.objects.filter(user = user) 
-#     return render(request, 'checkout1.html',{"ele":ele, "fashion":fashion, "buy":buy, "add":add})
-
 def checkout(request):
     ele = Electronics.objects.all()
     fashion = Fashion.objects.all()
@@ -277,7 +243,6 @@ def address(request):
         p1.save()
         return redirect(show_address)
     else:
-        # return HttpResponse("Already adderss is present")
         messages.info(request, 'Already adderss is present!!!')
         return redirect(profile)
 
@@ -305,14 +270,12 @@ def makepayment(request):
         try:
             buyer = Payment.objects.get(card_no=card_no,cvv=cvv,expiry=expiry)            
         except:
-            # return HttpResponse("Invalid card details")
             messages.info(request, 'Invalid card details!!!')
             return redirect(makepayment)
 
         else:
             owner = Payment.objects.get(card_no='1234 1234 1234 1234',cvv='123',expiry='12/2025')
             if(buyer.balance < request.session["tot"]):
-                # return HttpResponse("Your balance is too low for this transaction")
                 messages.info(request, 'Your balance is too low for this transaction, please use another card!!!')
                 return redirect(makepayment)
 
@@ -373,16 +336,15 @@ def change_password(request):
             try:
                 u1 = UserInfo.objects.get(username=uname, password=pwd)
             except:
-                # return HttpResponse("Invalid old Password...")
                 messages.info(request, 'Invalid old Password!!!')
                 return redirect(change_password)
             else:
                 newpass = request.POST["newpassword"]
                 u1 = UserInfo(uname,newpass,'active')
                 u1.save()
-                return redirect(home)
+                messages.info(request, 'Password Change Successful!!!')
+                return redirect(change_password)
         else:
-            # return HttpResponse("Invalid Username...")
             messages.info(request, 'Invalid Username!!!')
             return redirect(change_password)
 

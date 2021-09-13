@@ -9,7 +9,6 @@
     if (txt1.value > 1) {
       txt1.value = parseInt(txt1.value) - 1;
     }
-
   }
   function increament(id) {
     var txt1 = document.getElementById(id);
@@ -65,10 +64,8 @@
                       class="btn btn-sm btn-secondary mr-3">Update</button>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <!-- <a href="#" class="btn btn-sm btn-secondary mr-3">Update </a> -->
                     <button type="submit" name="action" value="remove" class="btn btn-sm btn-secondary mr-3">Remove
                       item</button>
-                    <!-- <a href="#" class="btn btn-sm btn-secondary mr-3">Remove item </a> -->
                     <h6>
                       <p class="mb-0"><span><strong>₹ {% widthratio item.eleproduct.price 1 item.qty %}</strong></span>
                       </p>
@@ -109,12 +106,11 @@
                       class="btn btn-sm btn-secondary mr-3">Update</button>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <!-- <a href="#" class="btn btn-sm btn-secondary mr-3">Update </a> -->
                     <button type="submit" name="action" value="remove" class="btn btn-sm btn-secondary mr-3">Remove
                       item</button>
-                    <!-- <a href="#" class="btn btn-sm btn-secondary mr-3">Remove item </a> -->
                     <h6>
-                      <p class="mb-0"><span><strong>₹ {% widthratio item1.fashionproduct.price 1 item1.qty %}</strong></span>
+                      <p class="mb-0"><span><strong>₹ {% widthratio item1.fashionproduct.price 1 item1.qty
+                            %}</strong></span>
                       </p>
                     </h6>
                   </div>
@@ -148,7 +144,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 <div class="container">

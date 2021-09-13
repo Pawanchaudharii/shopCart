@@ -31,14 +31,8 @@
 <!-- End Banner Slider -->
 {% endblock banner_slider %}
 
-{% block livesale %}
-<!-- Live Sale Section -->
-
-<!-- End Live Sale Section -->
-{% endblock livesale %}
-
 {% block main-content %}
-<!-- 1st Product Slider -->
+<!--  Product Slider -->
 <div class="m-3">
   <h2>shopCart Electronics</h2>
   <!-- Slider 1 -->
@@ -53,7 +47,7 @@
   </div>
 
   <h2>shopCart Fashions</h2>
-
+  <!-- Slider 2 -->
   <div class="owl-carousel" id="slider1">
     {% for fp in fashionproducts %}
     <div class="item"><img src="{{fp.fashionproduct_image.url}}" alt="" height="300px"><span
@@ -64,7 +58,7 @@
 
   </div>
 </div>
-<!-- End 1st Product Slider -->
+<!-- End  Product Slider -->
 
 <!-- Payment Info Section -->
 <h2> &nbsp Payment Options to Pay</h2>
@@ -102,7 +96,4 @@
 </div>
 <!-- End Payment Info Section -->
 
-<!-- 2nd Product Slider -->
-
-<!-- End 2nd Product Slider -->
 {% endblock main-content %}
